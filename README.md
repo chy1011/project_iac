@@ -18,4 +18,9 @@ Doing so i could pick up Terrarform, Ansible, Flask, Kubernetes and Prometheus/G
 - [ ] Write a playbook to deploy Prometheus and Grafana
 - [ ] Write a playbook to configure node_exporters on the x2 aws instance
 
+## Researching
+Researching for a CI tool that could be used to build and test Python Flask Application.  
+Jenkins Reference:  
+[Jenkins with Python Flask App Deployment](https://joachim8675309.medium.com/jenkins-ci-pipeline-with-python-8bf1a0234ec3)  
+
 ## Learning points! (Will be updated along the way!)
