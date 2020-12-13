@@ -22,6 +22,21 @@ resource "aws_instance" "k8s-master" {
   }
 }
 
+resource "aws_instance" "k8s-worker" {
+  ami           = "ami-06fb5332e8e3e577a"
+  instance_type = "t2.micro"
+
+	key_name = "terraform-deploy"
+
+  root_block_device {
+   volume_size  = 20
+  }
+
+  tags = {
+    Name  = "k8-worker"
+  }
+}
+
 output "public_ip" {
   description = "Public IP Address of created instance"
   value       = aws_instance.k8s-master.public_ip
