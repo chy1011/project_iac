@@ -1,2 +1,10 @@
 ---
 # tasks file for update_package
+- name: Update apt-get packages
+  apt:
+    update_cache: yes
+
+- name: Upgrade apt-get packages
+  apt:
+    name: "*"
+    state: latest

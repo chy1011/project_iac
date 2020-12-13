@@ -1,0 +1,90 @@
+---
+# tasks file for kubernetes_prerequisites
+- name: Install containerd package
+  apt:
+    name: containerd
+    state: present
+    update_cache: yes
+  tags:
+    - master
+    - worker
+
+- name: Create containerd directory
+  file:
+    path: /etc/containerd
+    state: directory
+  tags:
+    - master
+    - worker
+
+- name: Configure containerd
+  shell: | 
+   containerd config default /etc/containerd/config.toml
+  tags:
+    - master
+    - worker
+
+- name: Add kubernetes GPG key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  tags:
+    - master
+    - worker
+
+- name: Add kubernetes repo
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+  tags:
+    - master
+    - worker
+
+- name: Install kubeadm, kubelet, kubectl
+  apt:
+    name: "['kubeadm', 'kubelet', 'kubectl']"
+    state: present
+    update_cache: yes
+  tags:
+    - master
+    - worker
+
+- name: Edit /etc/sysctl.conf
+  lineinfile:
+    path: /etc/sysctl.conf
+    insertafter: EOF
+    line: net.bridge.bridge-nf-call-iptables = 1
+    state: present
+  tags:
+    - master
+    - worker
+
+- name: Add '1' into IP_FORWARD
+  shell: echo '1' > /proc/sys/net/ipv4/ip_forward
+  tags:
+    - master
+    - worker
+
+- name: Reload sysctl configurations
+  shell: sysctl --system
+  tags:
+    - master
+    - worker
+
+- name: Load modprobe overlay
+  shell: modprobe overlay
+  tags:
+    - master
+    - worker
+
+- name: Load modprobe br_netfilter
+  shell: modprobe br_netfilter
+  tags:
+    - master
+    - worker
+
+- name: Disable swap
+  shell: swapoff -a
+  tags:
+    - master
+    - worker

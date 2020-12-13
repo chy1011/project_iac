@@ -1,0 +1,6 @@
+- name: ======================= Updating of repositories and packages =======================
+  hosts: aws_instances
+  become: yes
+
+  roles:
+  - 'update_package'

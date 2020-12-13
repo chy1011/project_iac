@@ -8,9 +8,9 @@ Doing so i could pick up Terrarform, Ansible, Flask, Kubernetes and Prometheus/G
 
 ## To-do List
 - [x] ~~Install terraform and document the step down~~
-- [ ] Write a terraform script to deploy AWS instances
-- [ ] Install ansible on my WSL Node
-- [ ] Configure ansible to remotely managed the AWS instances
+- [x] Write a terraform script to deploy AWS instances
+- [x] Install ansible on my WSL Node
+- [x] Configure ansible to remotely managed the AWS instances
 - [ ] Write a playbook to configure and install kubernetes cluster for both instancse (1x Master, 1x Worker)
 - [ ] Dockerize a flask application
      - Hopefully, write a flask blog or we can grab a template somewhere off github BUT CRUD capability we have to write and understand on our own

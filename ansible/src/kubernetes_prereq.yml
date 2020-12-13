@@ -1,0 +1,6 @@
+- name: Installing Kubernees Prerequisies - Conainerd runime
+  hosts: aws_instances
+  become: yes
+
+  roles:
+  - kubernetes_prerequisites 

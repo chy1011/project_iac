@@ -1,0 +1,21 @@
+---
+# tasks file for k8s_master_config
+
+- name: Pulling images for kubernetes
+  shell: kubeadm config images pull
+  tags:
+    - master
+
+- name: Initialize kubernetes control plane
+  shell: kubeadm init --pod-network-cidr=192.168.0.0/16
+  register: master_var
+  tags:
+    - master
+
+- name: Copy output of master_var to a file
+  local_action:
+    module: copy
+    content: "{{ master_var }}"
+    dest: $HOME/master_var.log
+  tags:
+    - master
