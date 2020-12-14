@@ -1,6 +1,5 @@
 ---
 # tasks file for k8s_master_config
-
 - name: Pulling images for kubernetes
   shell: kubeadm config images pull
   tags:
@@ -8,14 +7,53 @@
 
 - name: Initialize kubernetes control plane
   shell: kubeadm init --pod-network-cidr=192.168.0.0/16
-  register: master_var
   tags:
     - master
 
-- name: Copy output of master_var to a file
-  local_action:
-    module: copy
-    content: "{{ master_var }}"
-    dest: $HOME/master_var.log
+- name: Printing out token join command
+  shell: kubeadm token create --print-join-command 2> /dev/null
+  register: token_output
   tags:
     - master
+
+- name: Configure current user to use kubectl
+  file:
+    path: /home/ubuntu/.kube
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+    mode: '0775'
+  tags:
+    - master
+
+- name: Copy config file into .kube folder under user's home
+  copy:
+    src: /etc/kubernetes/admin.conf
+    dest: /home/ubuntu/.kube/config
+    owner: ubuntu
+    group: ubuntu
+    mode: '0600'
+  tags:
+    - master
+
+- name: Get the calico config file
+  get_url:
+    url: https://docs.projectcalico.org/manifests/calico.yaml
+    dest: /home/ubuntu/calico.yaml
+    owner: ubuntu
+    group: ubuntu
+    mode: '0644'
+  tags:
+    - master
+
+- name: Apply calico config
+  shell: kubectl apply -f /home/ubuntu/calico.yaml
+  tags:
+    - master
+
+- name: Print output of kubernetes initilization
+  debug:
+    var: token_output.stdout_lines 
+  tags:
+    - master
+

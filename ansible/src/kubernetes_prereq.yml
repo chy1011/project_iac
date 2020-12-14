@@ -1,4 +1,4 @@
-- name: Installing Kubernees Prerequisies - Conainerd runime
+- name: Installing Kubernees Prerequisies - Conainerd runtime
   hosts: aws_instances
   become: yes
 
