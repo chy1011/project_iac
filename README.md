@@ -12,7 +12,7 @@ Doing so i could pick up Terrarform, Ansible, Flask, Kubernetes and Prometheus/G
 - [x] Install ansible on my WSL Node
 - [x] Configure ansible to remotely managed the AWS instances
 - [x] Write a playbook to configure and install kubernetes cluster for both instancse (1x Master, 1x Worker)
-- [ ] Dockerize a flask application
+- [ ] Containerize a flask application and either saved the image locally or publish to dockerhub
 - [ ] Write a deployment, service for this application's image
 - [ ] Write a playbook to deploy Prometheus and Grafana
 - [ ] Write a playbook to configure node_exporters on the x2 aws instance
