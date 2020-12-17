@@ -1,8 +1,6 @@
 [master]
-18.141.236.200
 
 [worker]
-13.212.8.72
 
 [aws_instances:children]
 master
