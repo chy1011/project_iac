@@ -18,7 +18,7 @@ resource "aws_instance" "containerd-k8s-master" {
   }
 
   tags = {
-    Name  = "k8-master"
+    Name  = "containerd-k8s-master"
   }
 }
 
@@ -55,4 +55,14 @@ output "worker_public_ip" {
 output "worker_public_dns" {
   description = "Public DNS of created instance"
   value       = aws_instance.containerd-k8s-worker.public_dns
+}
+
+output "master_private_ip" {
+  description = "Private IP Address of Master Node to be in /etc/hosts"
+  value       = aws_instance.containerd-k8s-master.private_ip
+}
+
+output "worker_private_ip" {
+  description = "Private IP Address of worker node to be in /etc/hosts"
+  value       = aws_instance.containerd-k8s-worker.private_ip
 }
