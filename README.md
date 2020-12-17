@@ -19,6 +19,12 @@ Doing so i could pick up Terrarform, Ansible, Flask, Kubernetes and Prometheus/G
 - [ ] Write a playbook to configure node_exporters on the x2 aws instance
 - [ ] Integrating CI/CD component with Jenkins once base structure is completed
 
+## Ad-hoc to-dos
+- [ ] Automate the steps whereby we have to go into the machines individually to edit /etc/hosts file.
+      - Find ways to capture/save the output of terraform to a file, afterwards write either a script/playbook to copy and replace the file onto the AWS instances
+- [ ] Write a script to automate the application of calico CNI on k8s master.
+- [ ] Compile everything into a single playbook/role/script to automate the deployment of infra (aws instances) and configuration of the instances.
+
 ## Researching
 Have to research more on this portion.
 Researching for a CI tool that could be used to build and test Python Flask Application.  
