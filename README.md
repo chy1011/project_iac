@@ -12,19 +12,21 @@ Doing so i could pick up Terrarform, Ansible, Flask, Kubernetes and Prometheus/G
 - [x] Install ansible on my WSL Node
 - [x] Configure ansible to remotely managed the AWS instances
 - [x] Write a playbook to configure and install kubernetes cluster for both instancse (1x Master, 1x Worker)
-- [ ] Containerize a flask application and either saved the image locally or publish to dockerhub
+- [ ] Containerize both flask application and PostgresSQl, either saved the image locally or publish to dockerhub
+      - Writing a flask application with CRUD capability will require a database, planing to use PostgreSQL for this.
 - [ ] Write a deployment, service for this application's image
 - [ ] Write a playbook to deploy Prometheus and Grafana
 - [ ] Write a playbook to configure node_exporters on the x2 aws instance
 - [ ] Integrating CI/CD component with Jenkins once base structure is completed
 
 ## Researching
+Have to research more on this portion.
 Researching for a CI tool that could be used to build and test Python Flask Application.  
   
 Jenkins Reference:  
 [Jenkins with Python Flask App Deployment](https://joachim8675309.medium.com/jenkins-ci-pipeline-with-python-8bf1a0234ec3)  
   
 Testing tools:  
-
+Have to research more on this portion.
 
 ## Learning points! (Will be updated along the way!)
