@@ -9,8 +9,7 @@ Doing so i could pick up Terrarform, Ansible, Flask, Kubernetes and Prometheus/G
 ## To-do List
 - [x] Install terraform and document the step down
 - [x] Write a terraform script to deploy AWS instances
-- [x] Install ansible on my WSL Node
-- [x] Configure ansible to remotely managed the AWS instances
+- [x] Install and configure ansible to remotely managed the AWS instances
 - [x] Write a playbook to configure and install kubernetes cluster for both instancse (1x Master, 1x Worker)
 - [ ] Containerize both flask application and PostgresSQl, either saved the image locally or publish to dockerhub
       - Writing a flask application with CRUD capability will require a database, planing to use PostgreSQL for this.
@@ -20,8 +19,9 @@ Doing so i could pick up Terrarform, Ansible, Flask, Kubernetes and Prometheus/G
 - [ ] Integrating CI/CD component with Jenkins once base structure is completed
 
 ## Ad-hoc to-dos
+- [ ] Automate the ansible's inventory file entry for master and worker ip addresses as everytime we redeploy ip addresses will change for our instances.
 - [ ] Automate the steps whereby we have to go into the machines individually to edit /etc/hosts file.
-      - Find ways to capture/save the output of terraform to a file, afterwards write either a script/playbook to copy and replace the file onto the AWS instances
+      - Find ways to capture/save the output of terraform to a file, afterwards write either a script/playbook to copy and replace the file onto the AWS instances.
 - [ ] Write a script to automate the application of calico CNI on k8s master.
 - [ ] Compile everything into a single playbook/role/script to automate the deployment of infra (aws instances) and configuration of the instances.
 
